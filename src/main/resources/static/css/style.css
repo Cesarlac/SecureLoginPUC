@@ -1,0 +1,76 @@
+/* Reset básico e Fonte */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Fundo da página com a imagem da PUC */
+body {
+    background-image: url('../images/fundo.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+}
+
+/* Estilo global dos campos de digitação (Inputs) */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: #fff;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+input::placeholder {
+    color: #a1a1aa; /* Cor do texto de placeholder */
+}
+
+input:focus {
+    border-color: #a855f7; /* Borda roxa ao clicar */
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Estilo global dos Botões */
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%); /* Degradê roxo */
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: opacity 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 10px;
+}
+
+button[type="submit"]:hover {
+    opacity: 0.9;
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.5); /* Brilho ao passar o mouse */
+}
+
+/* Estilo global dos Links */
+a {
+    color: #c4b5fd;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #a855f7;
+    text-decoration: underline;
+}
