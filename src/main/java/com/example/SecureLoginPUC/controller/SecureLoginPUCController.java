@@ -1,12 +1,19 @@
 package com.example.SecureLoginPUC.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.ui.Model;
 
+import com.example.SecureLoginPUC.service.SendEmailService;
+
 @Controller
 public class SecureLoginPUCController {
+
+    @Autowired
+    private SendEmailService sendEmailService;
 
     @GetMapping("/login")
     public String login() {
@@ -71,8 +78,15 @@ public class SecureLoginPUCController {
 
     @PostMapping("/recoverpassword")
     public String handleRecoverPassword(@RequestParam("email") String email) {
-        System.out.println("Simulando envio de e-mail de recuperação para: " + email);
-        System.out.println("Recuperação de E-mail: Redirecionado para a página de login.");
+        String assunto = "Recuperação de Senha - PUC Minas";
+        String corpo = "Olá,\n\nRecebemos um pedido de recuperação de senha para esta conta.\n\nPara redefinir a sua senha, entre em contato com o suporte ou utilize o link temporário do sistema.\n\nAtenciosamente,\nEquipa PUC Minas.";
+        
+        try {
+            sendEmailService.sendEmail(email, assunto, corpo);
+            System.out.println("E-mail de recuperação enviado com sucesso para: " + email);
+        } catch (Exception e) {
+            System.out.println("Erro ao enviar o e-mail: " + e.getMessage());
+        }
         
         return "redirect:/login"; 
     }
